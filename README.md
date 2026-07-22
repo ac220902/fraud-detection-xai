@@ -1,6 +1,6 @@
 # Credit Card Fraud Detection with Explainable AI (SHAP)
 
-A production-grade machine learning pipeline for detecting fraudulent credit card transactions, with full model explainability using SHAP — directly aligned with UK/EU financial AI regulation requirements (FCA Consumer Duty, EU AI Act).
+An end-to-end machine learning pipeline for detecting fraudulent credit card transactions, with full model explainability using SHAP — built around the kind of per-decision transparency that regulated financial AI use cases increasingly require.
 
 ---
 
@@ -13,7 +13,7 @@ A production-grade machine learning pipeline for detecting fraudulent credit car
 | Recall (Fraud class) | **0.88** |
 | Precision (Fraud class) | **0.53** |
 
-> Evaluated on 284,807 real credit card transactions with a severe class imbalance (0.17% fraud rate). AUPRC is the correct primary metric for imbalanced fraud detection — ROC-AUC alone is misleading at this imbalance ratio.
+> Evaluated on 284,807 real credit card transactions with a severe class imbalance (0.17% fraud rate). AUPRC is the correct primary metric for imbalanced fraud detection — ROC-AUC alone is misleading at this imbalance ratio. The recall/precision split reflects a deliberate lean toward catching more fraud at the cost of more false positives; a production system would tune this threshold against the actual cost of a missed fraud vs. a blocked legitimate transaction.
 
 ---
 
@@ -58,14 +58,14 @@ Reveals how V14's influence changes across its value range, and which secondary 
 
 ## Why This Matters: XAI in Financial Services
 
-Financial institutions face a dual challenge: **detect fraud accurately** and **explain every decision to regulators and customers.**
+Financial institutions face a dual challenge: **detect fraud accurately** and **explain individual decisions to compliance teams and customers.**
 
-A model that flags a transaction as fraudulent but cannot explain why is not deployable in a regulated environment. SHAP solves this by providing:
+A model that flags a transaction as fraudulent but can't explain why is a hard sell in a regulated environment. SHAP addresses this by providing:
 
 - **Per-transaction audit trails** — every flag comes with feature-level contributions that can be shown to compliance teams
 - **Global model transparency** — summary plots show which signals drive fraud detection across the entire portfolio
 - **Data drift detection** — shifts in SHAP value distributions signal when the model is seeing new patterns and needs retraining
-- **Regulatory compliance** — directly satisfies explainability requirements under FCA Consumer Duty (2023) and EU AI Act (2024)
+- **Regulatory relevance** — this kind of per-decision transparency is the direction regulation is heading (e.g. the EU AI Act's requirements for high-risk systems, and the FCA's Consumer Duty expectations around fair customer outcomes). This project wasn't built or assessed against either framework directly, but the explainability approach is the same one those frameworks are pushing the industry toward.
 
 ---
 
@@ -146,7 +146,7 @@ Run all cells top to bottom. Outputs are saved to `outputs/plots/` and `outputs/
 
 This project applies the same SHAP-based explainability framework developed in my MEng dissertation (*SHAP-based Explainable AI Framework for Software Defect Prediction*, University of Leicester, 2026 — awarded 83.97%) to a real-world, highly imbalanced binary classification problem.
 
-The dissertation explored SHAP's properties in a software engineering context (interpretability scoring, accuracy-interpretability tradeoff). This project demonstrates those same properties in a production-scale financial use case — the exact setting where model transparency is most critical and least often implemented.
+The dissertation explored SHAP's properties in a software engineering context (interpretability scoring, accuracy-interpretability tradeoff). This project demonstrates those same properties on a dataset at production scale — the exact setting where model transparency is most critical and least often implemented.
 
 ---
 
